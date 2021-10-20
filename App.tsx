@@ -1,13 +1,14 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
-import PanGestureHandlerExam from './src/PanGestureHandler';
+import {StyleSheet, View} from 'react-native';
+import ScrollViewPage from './src/ScrollViewPage';
 
 function App() {
   return (
-    <SafeAreaView style={styles.main}>
+    <View style={styles.main}>
       {/* <Introduction /> */}
-      <PanGestureHandlerExam />
-    </SafeAreaView>
+      {/* <PanGestureHandlerExam /> */}
+      <ScrollViewPage />
+    </View>
   );
 }
 
