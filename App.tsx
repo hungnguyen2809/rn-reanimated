@@ -1,13 +1,14 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import ScrollViewPage from './src/ScrollViewPage';
+import ColorTheme from './src/ColorTheme';
 
 function App() {
   return (
     <View style={styles.main}>
       {/* <Introduction /> */}
       {/* <PanGestureHandlerExam /> */}
-      <ScrollViewPage />
+      {/* <ScrollViewPage /> */}
+      <ColorTheme />
     </View>
   );
 }
