@@ -12,6 +12,8 @@
 #import <SKIOSNetworkPlugin/SKIOSNetworkAdapter.h>
 #import <FlipperKitReactPlugin/FlipperKitReactPlugin.h>
 
+#import "TaskManager.h"
+
 static void InitializeFlipper(UIApplication *application) {
   FlipperClient *client = [FlipperClient sharedClient];
   SKDescriptorMapper *layoutDescriptorMapper = [[SKDescriptorMapper alloc] initWithDefaults];
@@ -24,7 +26,7 @@ static void InitializeFlipper(UIApplication *application) {
 #endif
 
 @implementation AppDelegate
-
+TaskManager *taskManager;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 #ifdef FB_SONARKIT_ENABLED
@@ -46,6 +48,13 @@ static void InitializeFlipper(UIApplication *application) {
   UIViewController *rootViewController = [UIViewController new];
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
+  
+  // each 2 seconds, call "EventA"
+  [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(sendEventAToReactNative:) userInfo:nil repeats:NO];
+  
+  // Khởi tạo TaskManager
+  taskManager = [TaskManager allocWithZone:nil];
+  
   [self.window makeKeyAndVisible];
   return YES;
 }
@@ -57,6 +66,10 @@ static void InitializeFlipper(UIApplication *application) {
 #else
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
+}
+
+-(void)sendEventAToReactNative:(NSTimer*)timer {
+  [taskManager sendEventWithName:@"EventA" body:@{@"name": @"Hung", @"age": @22}];
 }
 
 @end

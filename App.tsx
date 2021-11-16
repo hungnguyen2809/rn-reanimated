@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import ColorTheme from './src/ColorTheme';
+import DemoNativeModules from './src/NativeModules';
 
 function App() {
   return (
@@ -8,7 +8,8 @@ function App() {
       {/* <Introduction /> */}
       {/* <PanGestureHandlerExam /> */}
       {/* <ScrollViewPage /> */}
-      <ColorTheme />
+      {/* <ColorTheme /> */}
+      <DemoNativeModules />
     </View>
   );
 }
