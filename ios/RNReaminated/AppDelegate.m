@@ -50,7 +50,7 @@ TaskManager *taskManager;
   self.window.rootViewController = rootViewController;
   
   // each 2 seconds, call "EventA"
-  [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(sendEventAToReactNative:) userInfo:nil repeats:NO];
+//  [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(sendEventAToReactNative:) userInfo:nil repeats:NO];
   
   // Khởi tạo TaskManager
   taskManager = [TaskManager allocWithZone:nil];
