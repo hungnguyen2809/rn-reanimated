@@ -1,17 +1,35 @@
 import React, {useEffect} from 'react';
-import {View, Text, StyleSheet, Pressable} from 'react-native';
 import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  Platform,
+  DeviceEventEmitter,
+} from 'react-native';
+import {
+  doTaskCallback,
   doTaskInfo,
   doTaskParams,
+  doTaskPromise,
   doTaskX,
   getAllTask,
   getAllTask2,
   getSomeTasks,
   getSomeTasks2,
+  sendEventNative,
+  showToastText,
   taskManagerEventEmitter,
 } from './common';
 
 function DemoNativeModules() {
+  useEffect(() => {
+    const removeEvent = DeviceEventEmitter.addListener('EventToastA', data => {
+      console.log('[EventToastA Data]: ', data);
+    });
+    return removeEvent.remove();
+  }, []);
+
   useEffect(() => {
     const removeEventA = taskManagerEventEmitter.addListener(
       'EventA',
@@ -25,7 +43,7 @@ function DemoNativeModules() {
       'EventB',
       event => {
         // EventB tên đăng ký dưới native, khi mà Event này đến thì thực thi callback
-        console.log('EventA: ', event);
+        console.log('EventB: ', event);
       },
     );
 
@@ -91,6 +109,32 @@ function DemoNativeModules() {
     }
   };
 
+  const handlePressButtonToastNative = async () => {
+    const isAndroid = Platform.OS === 'android';
+    if (isAndroid) {
+      sendEventNative();
+
+      showToastText('Nguyễn Văn Hùng', 'SHORT');
+
+      doTaskCallback(
+        100,
+        (name, age, address) => {
+          console.log('[Infor doTaskCallback]: ', {name, age, address});
+        },
+        mesError => {
+          console.log('[Error doTaskCallback]: ', mesError);
+        },
+      );
+
+      try {
+        const data = await doTaskPromise(123);
+        console.log('[Infor doTaskPromise]: ', data);
+      } catch (error) {
+        console.log('[Error doTaskPromise]: ', error);
+      }
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Pressable
@@ -106,6 +150,13 @@ function DemoNativeModules() {
           return [styles.btn, {opacity: pressed ? 0.8 : 1}];
         }}>
         <Text style={styles.text}>Task2Manager</Text>
+      </Pressable>
+      <Pressable
+        onPress={handlePressButtonToastNative}
+        style={({pressed}) => {
+          return [styles.btn, {opacity: pressed ? 0.8 : 1}];
+        }}>
+        <Text style={styles.text}>Toast Android Native</Text>
       </Pressable>
     </View>
   );
