@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import DemoNativeModules from './src/NativeModules';
+import ZoomViewer from './src/ZoomViewer';
 
 function App() {
   return (
@@ -9,7 +9,8 @@ function App() {
       {/* <PanGestureHandlerExam /> */}
       {/* <ScrollViewPage /> */}
       {/* <ColorTheme /> */}
-      <DemoNativeModules />
+      {/* <DemoNativeModules /> */}
+      <ZoomViewer />
     </View>
   );
 }
