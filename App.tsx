@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import ZoomViewer from './src/ZoomViewer';
+import DoubleTapLike from './src/DoubleTapLike';
 
 function App() {
   return (
@@ -10,7 +10,8 @@ function App() {
       {/* <ScrollViewPage /> */}
       {/* <ColorTheme /> */}
       {/* <DemoNativeModules /> */}
-      <ZoomViewer />
+      {/* <ZoomViewer /> */}
+      <DoubleTapLike />
     </View>
   );
 }
