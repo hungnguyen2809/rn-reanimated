@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import DoubleTapLike from './src/DoubleTapLike';
+import ScrollViewPanGesture from './src/ScrollViewPanGesture';
 
 function App() {
   return (
@@ -11,7 +11,8 @@ function App() {
       {/* <ColorTheme /> */}
       {/* <DemoNativeModules /> */}
       {/* <ZoomViewer /> */}
-      <DoubleTapLike />
+      {/* <DoubleTapLike /> */}
+      <ScrollViewPanGesture />
     </View>
   );
 }
