@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import SwipeDeck from './src/SwipeDeck';
+import CircularProgessBar from './src/CircularProgessBar';
 
 function App() {
   return (
@@ -13,8 +13,8 @@ function App() {
       {/* <ZoomViewer /> */}
       {/* <DoubleTapLike /> */}
       {/* <ScrollViewPanGesture /> */}
-      {/* <CircularProgessBar /> */}
-      <SwipeDeck />
+      <CircularProgessBar />
+      {/* <SwipeDeck /> */}
     </View>
   );
 }
