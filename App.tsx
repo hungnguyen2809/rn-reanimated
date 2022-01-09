@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import ScrollViewPanGesture from './src/ScrollViewPanGesture';
+import SwipeDeck from './src/SwipeDeck';
 
 function App() {
   return (
@@ -12,7 +12,9 @@ function App() {
       {/* <DemoNativeModules /> */}
       {/* <ZoomViewer /> */}
       {/* <DoubleTapLike /> */}
-      <ScrollViewPanGesture />
+      {/* <ScrollViewPanGesture /> */}
+      {/* <CircularProgessBar /> */}
+      <SwipeDeck />
     </View>
   );
 }
