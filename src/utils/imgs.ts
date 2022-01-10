@@ -1,6 +1,7 @@
 export const imgs = {
   bg: require('./../assets/bg.jpg'),
   like: require('./../assets/like.png'),
+  iconTrash: require('./../assets/icons-trash.png'),
 };
 
 export const imgsInta = [

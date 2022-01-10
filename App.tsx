@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import CircularProgessBar from './src/CircularProgessBar';
+import SwipePress from './src/SwipePress';
 
 function App() {
   return (
@@ -13,8 +13,9 @@ function App() {
       {/* <ZoomViewer /> */}
       {/* <DoubleTapLike /> */}
       {/* <ScrollViewPanGesture /> */}
-      <CircularProgessBar />
+      {/* <CircularProgessBar /> */}
       {/* <SwipeDeck /> */}
+      <SwipePress />
     </View>
   );
 }

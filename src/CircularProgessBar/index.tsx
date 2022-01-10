@@ -37,7 +37,7 @@ function CircularProgessBar() {
 
   const progressText = useDerivedValue(() => {
     return `${Math.floor(progress.value * 100)}`;
-  });
+  }, []);
 
   const onPressRun = () => {
     progress.value = withTiming(1, {duration: 2000}, isFinish => {
