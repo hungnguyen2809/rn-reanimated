@@ -1,11 +1,12 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import AnimatedRNTutorial from './src/RNAnimated';
+import PanResponderRN from './src/RNPanResponder';
 
 function App() {
   return (
     <View style={styles.main}>
-      <AnimatedRNTutorial />
+      {/* <AnimatedRNTutorial /> */}
+      <PanResponderRN />
       {/* <Introduction /> */}
       {/* <PanGestureHandlerExam /> */}
       {/* <ScrollViewPage /> */}
