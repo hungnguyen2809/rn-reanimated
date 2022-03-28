@@ -1,10 +1,11 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import SwipePress from './src/SwipePress';
+import AnimatedRNTutorial from './src/RNAnimated';
 
 function App() {
   return (
     <View style={styles.main}>
+      <AnimatedRNTutorial />
       {/* <Introduction /> */}
       {/* <PanGestureHandlerExam /> */}
       {/* <ScrollViewPage /> */}
@@ -15,7 +16,7 @@ function App() {
       {/* <ScrollViewPanGesture /> */}
       {/* <CircularProgessBar /> */}
       {/* <SwipeDeck /> */}
-      <SwipePress />
+      {/* <SwipePress /> */}
     </View>
   );
 }
