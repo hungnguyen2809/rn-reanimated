@@ -1,18 +1,18 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import DoubleTabLikeRN from './src/DoubleTapLikeRN';
+import DemoNativeModules from './src/NativeModules';
 
 function App() {
   return (
     <View style={styles.main}>
       {/* <AnimatedRNTutorial /> */}
       {/* <PanResponderRN /> */}
-      <DoubleTabLikeRN />
+      {/* <DoubleTabLikeRN /> */}
       {/* <Introduction /> */}
       {/* <PanGestureHandlerExam /> */}
       {/* <ScrollViewPage /> */}
       {/* <ColorTheme /> */}
-      {/* <DemoNativeModules /> */}
+      <DemoNativeModules />
       {/* <ZoomViewer /> */}
       {/* <DoubleTapLike /> */}
       {/* <ScrollViewPanGesture /> */}

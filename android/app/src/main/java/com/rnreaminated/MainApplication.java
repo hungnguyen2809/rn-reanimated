@@ -9,6 +9,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JSIModulePackage;
 import com.facebook.soloader.SoLoader;
+import com.rnreaminated.BlueModule.BluePackage;
 import com.rnreaminated.ToastModule.ToastPackage;
 import com.swmansion.reanimated.ReanimatedJSIModulePackage;
 
@@ -31,6 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
             packages.add(new ToastPackage());
+            packages.add(new BluePackage());
           return packages;
         }
 

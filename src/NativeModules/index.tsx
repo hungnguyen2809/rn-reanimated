@@ -1,12 +1,13 @@
 import React, {useEffect} from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
-  Pressable,
-  Platform,
   DeviceEventEmitter,
+  Platform,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
+import BlueModule from './BlueModule';
 import {
   doTaskCallback,
   doTaskInfo,
@@ -17,7 +18,6 @@ import {
   getAllTask2,
   getSomeTasks,
   getSomeTasks2,
-  sendEventNative,
   showToastText,
   taskManagerEventEmitter,
 } from './common';
@@ -54,45 +54,49 @@ function DemoNativeModules() {
   }, []);
 
   const handlePressButton = () => {
-    doTaskInfo('Learn Native Module of React Native', 95);
-    doTaskParams('Log task params', {
-      name: 'Hung',
-      age: 22,
-      email: 'hungnguyen99.nvh@gmail.com',
-      address: 'Bac Giang',
-    });
-    getAllTask((error, tasks) => {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log(tasks);
-      }
-    });
-    getSomeTasks('all')
-      .then(data => {
-        console.log('[Data]: ', data);
-      })
-      .catch(error => {
-        console.log('[Error]: ', error);
+    if (Platform.OS === 'ios') {
+      doTaskInfo('Learn Native Module of React Native', 95);
+      doTaskParams('Log task params', {
+        name: 'Hung',
+        age: 22,
+        email: 'hungnguyen99.nvh@gmail.com',
+        address: 'Bac Giang',
       });
+      getAllTask((error, tasks) => {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(tasks);
+        }
+      });
+      getSomeTasks('all')
+        .then(data => {
+          console.log('[Data]: ', data);
+        })
+        .catch(error => {
+          console.log('[Error]: ', error);
+        });
+    }
   };
 
   const handlePressButtonTask2 = async () => {
-    doTaskX('Learn React Native', 90);
+    if (Platform.OS === 'ios') {
+      doTaskX('Learn React Native', 90);
 
-    getAllTask2(
-      {
-        name: 'Hung Nguyen',
-        email: 'hungnv129@viettelpost.com.vn',
-      },
-      (error, tasks) => {
-        if (error) {
-          console.log('[getAllTask2 Error]: ', error);
-        } else {
-          console.log('[getAllTask2 Tasks]: ', tasks);
-        }
-      },
-    );
+      getAllTask2(
+        {
+          name: 'Hung Nguyen',
+          email: 'hungnv129@viettelpost.com.vn',
+        },
+        (error, tasks) => {
+          if (error) {
+            console.log('[getAllTask2 Error]: ', error);
+          } else {
+            console.log('[getAllTask2 Tasks]: ', tasks);
+          }
+        },
+      );
+    }
 
     // getSomeTasks2('all')
     //   .then(data => {
@@ -110,9 +114,8 @@ function DemoNativeModules() {
   };
 
   const handlePressButtonToastNative = async () => {
-    const isAndroid = Platform.OS === 'android';
-    if (isAndroid) {
-      sendEventNative();
+    if (Platform.OS === 'android') {
+      // sendEventNative();
 
       showToastText('Nguyễn Văn Hùng', 'SHORT');
 
@@ -135,29 +138,48 @@ function DemoNativeModules() {
     }
   };
 
+  const handleBuletoolth = (): void => {
+    BlueModule.isEnabled(info => {
+      console.log(info);
+    });
+  };
+
   return (
     <View style={styles.container}>
-      <Pressable
-        onPress={handlePressButton}
-        style={({pressed}) => {
-          return [styles.btn, {opacity: pressed ? 0.8 : 1}];
-        }}>
-        <Text style={styles.text}>TaskManager</Text>
-      </Pressable>
-      <Pressable
-        onPress={handlePressButtonTask2}
-        style={({pressed}) => {
-          return [styles.btn, {opacity: pressed ? 0.8 : 1}];
-        }}>
-        <Text style={styles.text}>Task2Manager</Text>
-      </Pressable>
-      <Pressable
-        onPress={handlePressButtonToastNative}
-        style={({pressed}) => {
-          return [styles.btn, {opacity: pressed ? 0.8 : 1}];
-        }}>
-        <Text style={styles.text}>Toast Android Native</Text>
-      </Pressable>
+      {Platform.OS === 'ios' && (
+        <>
+          <Pressable
+            onPress={handlePressButton}
+            style={({pressed}) => {
+              return [styles.btn, {opacity: pressed ? 0.8 : 1}];
+            }}>
+            <Text style={styles.text}>TaskManager</Text>
+          </Pressable>
+          <Pressable
+            onPress={handlePressButtonTask2}
+            style={({pressed}) => {
+              return [styles.btn, {opacity: pressed ? 0.8 : 1}];
+            }}>
+            <Text style={styles.text}>Task2Manager</Text>
+          </Pressable>
+        </>
+      )}
+      {Platform.OS === 'android' && (
+        <>
+          <Pressable
+            onPress={handlePressButtonToastNative}
+            style={({pressed}) => {
+              return [styles.btn, {opacity: pressed ? 0.8 : 1}];
+            }}>
+            <Text style={styles.text}>Toast Android Native</Text>
+          </Pressable>
+          <Pressable
+            onPress={handleBuletoolth}
+            style={({pressed}) => [styles.btn, {opacity: pressed ? 0.8 : 1}]}>
+            <Text style={styles.text}>Bluetoolth</Text>
+          </Pressable>
+        </>
+      )}
     </View>
   );
 }
