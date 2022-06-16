@@ -4,6 +4,8 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
 import android.os.Build;
 
+import androidx.annotation.NonNull;
+
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -21,7 +23,7 @@ public class BlueModule extends ReactContextBaseJavaModule {
         setUpModule();
     }
 
-
+    @NonNull
     public String getName() {
         return "BlueModule";
     }
@@ -36,20 +38,19 @@ public class BlueModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void isEnabled(Callback callback){
         WritableMap writableMap = Arguments.createMap();
+
         if (bluetoothAdapter == null){
-            writableMap.putString("message", "Device doesn't support Bluetooth");
             writableMap.putBoolean("status", false);
-            callback.invoke(writableMap);
+            writableMap.putString("message", "Device doesn't support Bluetooth");
+        }else if (bluetoothAdapter.isEnabled()){
+            writableMap.putBoolean("status", true);
+            writableMap.putString("message", "Bluetooth is on");
         }else {
-            if (bluetoothAdapter.isEnabled()){
-                writableMap.putString("message", "Bluetooth is on");
-                writableMap.putBoolean("status", true);
-            }else {
-                writableMap.putString("message", "Bluetooth is off");
-                writableMap.putBoolean("status", false);
-            }
+            writableMap.putBoolean("status", false);
+            writableMap.putString("message", "Bluetooth is off");
         }
 
+        callback.invoke(writableMap);
     }
 
 }
