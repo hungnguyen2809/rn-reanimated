@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import DemoNativeModules from './src/NativeModules';
+import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
+import Card3D from './src/Card3D';
 
 function App() {
   return (
@@ -12,18 +13,19 @@ function App() {
       {/* <PanGestureHandlerExam /> */}
       {/* <ScrollViewPage /> */}
       {/* <ColorTheme /> */}
-      <DemoNativeModules />
+      {/* <DemoNativeModules /> */}
       {/* <ZoomViewer /> */}
       {/* <DoubleTapLike /> */}
       {/* <ScrollViewPanGesture /> */}
       {/* <CircularProgessBar /> */}
       {/* <SwipeDeck /> */}
       {/* <SwipePress /> */}
+      <Card3D />
     </View>
   );
 }
 
-export default App;
+export default gestureHandlerRootHOC(App);
 
 const styles = StyleSheet.create({
   main: {
