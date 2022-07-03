@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
-import Card3D from './src/Card3D';
+import BottomSheet from './src/BottomSheet';
 
 function App() {
   return (
@@ -20,7 +20,8 @@ function App() {
       {/* <CircularProgessBar /> */}
       {/* <SwipeDeck /> */}
       {/* <SwipePress /> */}
-      <Card3D />
+      {/* <Card3D /> */}
+      <BottomSheet />
     </View>
   );
 }
