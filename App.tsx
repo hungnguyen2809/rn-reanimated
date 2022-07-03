@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
-import BottomSheet from './src/BottomSheet';
+import FoodApp from './src/FoodApp';
 
 function App() {
   return (
@@ -21,7 +21,8 @@ function App() {
       {/* <SwipeDeck /> */}
       {/* <SwipePress /> */}
       {/* <Card3D /> */}
-      <BottomSheet />
+      {/* <BottomSheet /> */}
+      <FoodApp />
     </View>
   );
 }
