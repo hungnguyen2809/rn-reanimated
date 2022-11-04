@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
-import FoodApp from './src/FoodApp';
+import FlatListAnimated from './src/FlatListAnimated';
 
 function App() {
   return (
@@ -22,7 +22,8 @@ function App() {
       {/* <SwipePress /> */}
       {/* <Card3D /> */}
       {/* <BottomSheet /> */}
-      <FoodApp />
+      {/* <FoodApp /> */}
+      <FlatListAnimated />
     </View>
   );
 }
